@@ -8,6 +8,7 @@ import android.widget.SearchView;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     RcAdapter adapter;
     JSONArray originalData;
     SearchView searchView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         rc = findViewById(R.id.rv);
         searchView = findViewById(R.id.searchView);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Refresh data when swiped
+                getData();
+            }
+        });
 
         getData();
     }
@@ -71,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         rc.setLayoutManager(new LinearLayoutManager(this));
         rc.setAdapter(adapter);
         setupSearchView();
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private String fetchJsonData(String urlString) throws IOException {
