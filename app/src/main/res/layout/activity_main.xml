@@ -17,19 +17,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
+            android:background="#F1F1F1"
             android:iconifiedByDefault="false"
             android:padding="5dp"
             android:queryHint="Chercher une ville..." />
 
     </LinearLayout>
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="685dp"
+            android:background="@color/gray"
             android:paddingHorizontal="10dp" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
