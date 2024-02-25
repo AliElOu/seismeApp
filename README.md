@@ -4,11 +4,6 @@ Is an Android application aims to help show daily infos about earthquakes.
 ## Table of Contents
 
 - [About](#about)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## About
