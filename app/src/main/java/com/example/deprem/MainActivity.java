@@ -3,6 +3,7 @@ package com.example.deprem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.widget.SearchView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,7 +11,9 @@ import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import android.text.TextUtils;
 
+import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,12 +23,17 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView rc;
+    RcAdapter adapter;
+    JSONArray originalData;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rc = findViewById(R.id.rv);
+        searchView = findViewById(R.id.searchView);
+
         getData();
     }
 
@@ -58,9 +66,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void SendToRc(JSONArray data) {
-        RcAdapter adapter = new RcAdapter(this, data);
+        originalData = data;
+        adapter = new RcAdapter(this, data);
         rc.setLayoutManager(new LinearLayoutManager(this));
         rc.setAdapter(adapter);
+        setupSearchView();
     }
 
     private String fetchJsonData(String urlString) throws IOException {
@@ -80,4 +90,41 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(jsonData.toString());
         return jsonData.toString();
     }
+
+    private void setupSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (TextUtils.isEmpty(newText)) {
+                    adapter.setData(originalData);
+                } else {
+                    JSONArray filteredData = filterData(newText);
+                    adapter.setData(filteredData);
+                }
+                return true;
+            }
+        });
+    }
+
+    private JSONArray filterData(String query) {
+        JSONArray filteredData = new JSONArray();
+        for (int i = 0; i < originalData.length(); i++) {
+            try {
+                JSONObject item = originalData.getJSONObject(i);
+                String location = item.getString("Location");
+                if (location.toLowerCase().contains(query.toLowerCase())) {
+                    filteredData.put(item);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return filteredData;
+    }
+
 }

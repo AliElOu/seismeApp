@@ -23,11 +23,16 @@ public class RcAdapter extends RecyclerView.Adapter<RcAdapter.ViewHolder> {
     JSONArray data;
     Context context;
 
-    public RcAdapter(Context ct, JSONArray dt)
-    {
+    public RcAdapter(Context ct, JSONArray dt) {
         context = ct;
         data = dt;
     }
+
+    public void setData(JSONArray newData) {
+        data = newData;
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
@@ -49,14 +54,11 @@ public class RcAdapter extends RecyclerView.Adapter<RcAdapter.ViewHolder> {
             holder.tv_ml.setText(jo.getString("Magnitude"));
             double temp = jo.getDouble("Magnitude");
             holder.tv_ml.setBackground(DetermineBgColor(temp));
-            // Récupérer l'URL de l'élément actuel
             final String url = "https://www.google.com/maps/@"+ jo.getString("x") + ","+ jo.getString("y") +"z?entry=ttu";
 
-            // Ajouter un OnClickListener à l'élément
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Ouvrir l'URL dans un navigateur lorsque l'élément est cliqué
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     context.startActivity(browserIntent);
                 }
