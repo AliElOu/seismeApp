@@ -52,7 +52,7 @@ public class SeismeAlertActivity extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... voids) {
                 try {
-                    return fetchJsonData("https://ecommerceapp00.000webhostapp.com/EcommerceApp/getSeisme.php");
+                    return fetchJsonData("https://seismeapp.000webhostapp.com/getSeisme.php");
                 } catch (IOException e) {
                     e.printStackTrace();
                     return null;
