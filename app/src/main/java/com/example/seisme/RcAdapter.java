@@ -54,7 +54,7 @@ public class RcAdapter extends RecyclerView.Adapter<RcAdapter.ViewHolder> {
             holder.tv_ml.setText(jo.getString("Magnitude"));
             double temp = jo.getDouble("Magnitude");
             holder.tv_ml.setBackground(DetermineBgColor(temp));
-            final String url = "https://www.google.com/maps/@"+ jo.getString("x") + ","+ jo.getString("y") +"z?entry=ttu";
+            final String url = "https://www.google.com/maps/@"+ jo.getString("x") + ","+ jo.getString("y") +",12.29z?entry=ttu";
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
