@@ -1,4 +1,4 @@
-package com.example.deprem;
+package com.example.seisme;
 
 import org.junit.Test;
 

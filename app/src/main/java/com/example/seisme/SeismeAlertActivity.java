@@ -1,4 +1,4 @@
-package com.example.deprem;
+package com.example.seisme;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

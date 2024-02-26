@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.deprem">
+    package="com.example.seisme">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,10 +12,10 @@
         android:theme="@style/Theme.MyApplication">
 
         <!-- Add the declaration for SeismeAlertActivity here -->
-        <activity android:name=".SeismeAlertActivity"/>
+        <activity android:name="com.example.seisme.SeismeAlertActivity"/>
 
         <!-- Your existing MainActivity declaration -->
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.seisme.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

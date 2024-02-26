@@ -1,4 +1,4 @@
-package com.example.deprem;
+package com.example.seisme;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -13,7 +13,7 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.deprem.R;
+import com.example.seisme.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
