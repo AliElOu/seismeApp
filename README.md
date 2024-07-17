@@ -1,9 +1,7 @@
 # Android-Seisme
 Is an Android application aims to help show daily infos about earthquakes.
 
-![Logo-1](https://github.com/user-attachments/assets/28f4a8a3-96f0-4294-ab5c-fff637144246)
-![Screenshot_20240717_061205](https://github.com/user-attachments/assets/42621287-a191-49a4-a3da-71003183cb84)
-
+![Sans titre-3](https://github.com/user-attachments/assets/817bd7f2-3942-4830-8068-4b6e9f60944a)
 
 ## About
 
